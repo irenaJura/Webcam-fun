@@ -34,6 +34,20 @@ function paintToCanvas() {
     }, 16);
 }
 
+// take photo function with snap sound effect
+function takePhoto() {
+    snap.currentTime = 0;
+    snap.play();
+    // take the data out of the canvas
+    const data = canvas.toDataURL('image/jpeg');
+    // console.log(data); text-based respresentation of an image called base64
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'me');
+    link.innerHTML = `<img src="${data}" alt="silly me" />`;
+    strip.insertBefore(link, strip.firstChild);
+}
+
 // run the function on page load
 getVideo();
 
